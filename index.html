@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kawasaki Motor Indonesia</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h2>Kawasaki</h2>
+            <p>Product management system</p>
+        </div>
+        <p class="error">Model Motor should be at least 3 characters</p>
+        <div class="inputs">
+            <input type="text" id="title" placeholder="Model Motor">
+            <div class="price">
+                <input type="number" id="price" placeholder="Harga">
+                <input type="number" id="taxes" placeholder="Pajak">
+                <input type="number" id="ads" placeholder="Asuransi">
+                <input type="number" id="discount" placeholder="Diskon">
+                <small id="total">Total: 0</small>
+            </div>
+            <input type="number" id="count" placeholder="Jumlah">
+            <input type="text" id="category" placeholder="Kategori">
+            <button id="submit">Buat</button>
+        </div>
+        <div class="outputs">
+            <div class="search">
+                <input type="text" id="search" placeholder="Cari sesuai Model Motor">
+                <div class="search-types">
+                    <button id="search-title">Cari sesuai Model Motor</button>
+                    <button id="search-category">Cari sesuai Kategori</button>
+                </div>
+            </div>
+            <div id="deleteAll">
+                <button id="delete-all">Delete All</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Model Motor</th>
+                        <th>Harga</th>
+                        <th>Pajak</th>
+                        <th>Asuransi</th>
+                        <th>Diskon</th>
+                        <th>Total</th>
+                        <th>Kategori</th>
+                        <th>Perbarui</th>
+                        <th>Hapus</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function updateTotal() {
+            // ... (unchanged)
+        }
+
+        document.getElementById("price").addEventListener("input", updateTotal);
+        document.getElementById("taxes").addEventListener("input", updateTotal);
+        document.getElementById("ads").addEventListener("input", updateTotal);
+        document.getElementById("discount").addEventListener("input", updateTotal);
+
+        document.getElementById("submit").addEventListener("click", function () {
+            // Get input values
+            var title = document.getElementById("title").value;
+            var price = parseFloat(document.getElementById("price").value) || 0;
+            var taxes = parseFloat(document.getElementById("taxes").value) || 0;
+            var ads = parseFloat(document.getElementById("ads").value) || 0;
+            var discount = parseFloat(document.getElementById("discount").value) || 0;
+            var count = parseFloat(document.getElementById("count").value) || 0;
+            var category = document.getElementById("category").value;
+
+            // Validate title length
+            if (title.length < 3) {
+                // Show error message
+                document.querySelector(".error").innerText = "Model Motor should be at least 3 characters";
+                return;
+            }
+
+            // Calculate total
+            var total = (price + taxes + ads - discount) * count;
+
+            // Check if a row with the same title already exists
+            var table = document.getElementById("tbody");
+            var existingRow = Array.from(table.rows).find(row => row.cells[1].innerHTML === title);
+
+            if (existingRow) {
+                // Show error message
+                alert("A row with the same title already exists. Please use a different title.");
+                return;
+            }
+
+            // Create a new table row with the data
+            var row = table.insertRow();
+
+            // Assign a dynamic ID based on the number of rows
+            var rowIndex = table.rows.length - 1;
+            row.id = "row_" + rowIndex;
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+            var cell10 = row.insertCell(9);
+
+            cell1.innerHTML = rowIndex;
+            cell2.innerHTML = title;
+            cell3.innerHTML = price;
+            cell4.innerHTML = taxes;
+            cell5.innerHTML = ads;
+            cell6.innerHTML = discount;
+            cell7.innerHTML = total;
+            cell8.innerHTML = category;
+            cell9.innerHTML = "<button onclick='updateRow(" + rowIndex + ")'>Perbarui</button>";
+            cell10.innerHTML = "<button onclick='deleteRow(" + rowIndex + ")'>Hapus</button>";
+
+            // Update total display
+            document.getElementById("total").innerText = "Total: 0";
+
+            // Reset error message
+            document.querySelector(".error").innerText = "";
+
+            // Reset input values
+            document.getElementById("title").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("taxes").value = "";
+            document.getElementById("ads").value = "";
+            document.getElementById("discount").value = "";
+            document.getElementById("count").value = "";
+            document.getElementById("category").value = "";
+        });
+
+        // Function to update row
+        function updateRow(rowIndex) {
+            // Implement your update logic here
+            console.log("Update row with index: " + rowIndex);
+        }
+
+        // Function to delete row
+        function deleteRow(rowIndex) {
+            // Implement your delete logic here
+            console.log("Delete row with index: " + rowIndex);
+        }
+    </script>
+</body>
+
+</html>

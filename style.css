@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --bg-color: #1f242d;
+  --second-bg-color: #323946;
+  --text-color: #fff;
+  --main-color: #0ef;
+}
+
+:root {
+  --bg-color: #1f242d;
+  --second-bg-color: #323946;
+  --text-color: #fff;
+  --main-color: #0ef;
+}
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  height: 15px;
+  color: var(--text-color);
+}
+*::selection {
+  background-color: var(--bg-color);
+  color: var(--main-color);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container{
+  width: 80%;
+  margin: auto;
+}
+
+.head{
+  text-align: center;
+  text-transform: uppercase;
+  margin: 10px auto;
+}
+.head h2{
+  color: var(--main-color);
+}
+input{
+  width: 100%;
+
+  outline: none;
+  border: none;
+  background-color: var(--second-bg-color);
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--text-color);
+  transition: 0.5s;
+  
+}
+input:focus{
+  border: 2px solid var(--main-color);
+  transform: scale(1.02);
+  background-color: #252b38;
+}
+input::placeholder{
+  color: #c7bebe;
+}
+.price input{
+  width: 20%;
+  margin-right: 10px;
+}
+#total{
+  background-color: var(--second-bg-color);
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+button{
+  width: 100%;
+  border: none;
+  outline: none;
+  margin: 10px 0;
+  background-color: var(--second-bg-color);
+  color: var(--text-color);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 4px var(--main-color);
+  transition: 0.5s;
+}
+button:hover{
+  box-shadow: none;
+  letter-spacing: 2px;
+}
+
+
+.search-types{
+  display: flex;
+  justify-content: space-between;
+}
+.search-types button{
+  width: 45%;
+}
+.search-types button:hover{
+  letter-spacing: 1px;
+}
+#delete-all{
+  box-shadow: 0 0 4px red;
+  display: none;
+}
+table{
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+table th{
+  text-transform: uppercase ;
+}
+table th, table td{
+  padding: 5px;
+}
+table button{
+  padding: 5px;
+  width: 90%;
+}
+table button#update{
+  box-shadow: 0 0 4px var(--main-color);
+}
+table button#delete{
+  box-shadow: 0 0 4px red;
+}
+table button:hover{
+  box-shadow: none !important;
+  letter-spacing: 1px;
+}
+button:hover{
+  box-shadow: none !important;
+}
+.error{
+  color: rgba(255, 64, 0, 0.433);
+  font-size: 24px;
+  text-align: center;
+}
+@media(max-width: 882px){
+  table{
+    font-size: 12px;
+    max-width: 100%;
+  }
+  .container{
+    width: 95%;
+  }
+}
+
+@media(max-width: 700px){
+  table{
+    font-size: 10px;
+  }
+  table button{
+    font-size: 10px;
+
+  }
+  table th, table td{
+    padding: 1px;
+  }
+}
